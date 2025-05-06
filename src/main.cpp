@@ -1,6 +1,8 @@
+// ReSharper disable once CppUnusedIncludeDirective
 #include "linmath_fmt.h"
-#include "spdlog/spdlog.h"
-#include "linmath.h"
+
+#include <spdlog/spdlog.h>
+#include <linmath.h>
 
 int main() {
     spdlog::info("Hello, World!");
