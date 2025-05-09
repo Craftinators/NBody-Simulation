@@ -1,15 +1,17 @@
-// ReSharper disable once CppUnusedIncludeDirective
-#include "linmath_fmt.h"
-
-#include <spdlog/spdlog.h>
-#include <linmath.h>
-
 #define GLAD_GL_IMPLEMENTATION
 #include <glad/gl.h>
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
+#include <spdlog/spdlog.h>
+
+void error_callback(int error, const char* description) {
+    spdlog::error("Error {}: {}", error, description);
+}
+
 int main() {
+    glfwSetErrorCallback(error_callback);
+
     if (!glfwInit()) {
         exit(EXIT_FAILURE);
     }
@@ -35,7 +37,7 @@ int main() {
 
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(252.0 / 255.0, 240.0 / 255.0, 204.0 / 255.0, 1.0f);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
